@@ -50,6 +50,14 @@ describe('DefaultPlayer', () => {
             .toBeTruthy();
     });
 
+    it('does not have an overlay component when hideOverlay is true', () => {
+        component.setProps({
+            hideOverlay: true,
+        });
+        expect(component.find(Overlay).exists())
+            .toBe(false);
+    });
+
     it('renders some default controls in a default order', () => {
         const controlsComponent = component.find(`.${styles.controls}`);
         expect(controlsComponent.childAt(0).is(PlayPause))

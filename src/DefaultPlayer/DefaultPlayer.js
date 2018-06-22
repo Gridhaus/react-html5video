@@ -36,6 +36,7 @@ const DefaultPlayer = ({
     onPlayPauseClick,
     onFullscreenClick,
     onCaptionsItemClick,
+    hideOverlay,
     ...restProps
 }) => {
     return (
@@ -49,9 +50,9 @@ const DefaultPlayer = ({
                 {...restProps}>
                 { children }
             </video>
-            <Overlay
+            { !hideOverlay && <Overlay
                 onClick={onPlayPauseClick}
-                {...video} />
+                {...video} />}
             { controls && controls.length && !video.error
                 ? <div className={styles.controls}>
                         { controls.map((control, i) => {
